@@ -187,12 +187,12 @@ Y debería mostrarse:
 ```
 
 ## Si no va al principio el pipenv --version
-ls -l ~/.local/bin
-export PATH=$HOME/.local/bin:$PATH
-pipenv --version
-echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
-source ~/.bashrc
-which pipenv
+### ls -l ~/.local/bin
+### export PATH=$HOME/.local/bin:$PATH
+### pipenv --version
+### echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+### source ~/.bashrc
+### which pipenv
 
 
 
