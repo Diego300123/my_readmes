@@ -140,6 +140,7 @@ systemctl start flask_app
 ```
 
 ## Configuración de Nginx
+### Importante instalar nginx con sudo apt install nginx
 
 **Fichero `/etc/nginx/sites-available/app.conf`**
 ```nginx
