@@ -186,5 +186,14 @@ Y debería mostrarse:
 <h1>App desplegada</h1>
 ```
 
+## Si no va al principio el pipenv --version
+ls -l ~/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+pipenv --version
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+which pipenv
+
+
 
  
