@@ -1,0 +1,29 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bullseye64"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "256"
+  end
+
+Configuración del servidor Proxy
+  config.vm.define "proxy" do |proxy|
+    proxy.vm.hostname = "www.example.test"
+    proxy.vm.network "private_network", ip: "192.168.57.10"
+
+    proxy.vm.provision "shell", inline: <<-SHELL
+      apt-get update && apt-get install -y nginx
+      echo "192.168.57.11 w1" >> /etc/hosts
+      cat > /etc/nginx/sites-available/default <<EOL
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.test www.example.test;
+    location / {
+        proxy_pass http://192.168.57.11:8080/;
+        add_header X-friend "Daniel Abarca Rodríguez";
+    }
+}
+EOL
+      systemctl restart nginx
+    SHELL
+  end
